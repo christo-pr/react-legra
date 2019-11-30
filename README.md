@@ -59,8 +59,7 @@ function MyComponent() {
 
 **Referenced Render:**
 
-You can use the `ref` prop to the component (which is available for all components) to reference
-the canvas element
+You can use the `ctx` prop to the component (which is available for all components) to reference it to a canvas element
 
 ```js
 import React, { useRef } from 'react'
@@ -87,7 +86,7 @@ function MyComponent() {
 
 **Using `<Board />` Component:**
 
-This works pretty much the same as the Referenced render, but to avoid the use of multiple `ctx` prop on all of your components
+This works pretty much the same as the Referenced Render, but you can avoid the use of multiple `ctx` prop on all of your components
 
 ```js
 import React from 'react'
