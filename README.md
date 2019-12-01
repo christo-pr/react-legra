@@ -109,9 +109,6 @@ function MyComponent() {
     <Board>
       <Line from={p1} to={p2} />
       <Line from={p3} to={p4} />
-      // You could also do
-      // <Board.Line from={p1} to={p2} />
-      // to prevent many imports
     </Board>
   )
 }
