@@ -6,8 +6,12 @@ export default function App() {
 
   const [options, setOptions] = useState([[5, 5], [10, 7]])
 
+  const randomPoint = () => {
+    return [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)]
+  }
+
   const click = () => {
-    setOptions([[0, 0], [3, 3]])
+    setOptions([randomPoint(), randomPoint()])
   }
 
   console.log('options', options)
