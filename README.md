@@ -36,7 +36,7 @@ The basic render will create a canvas for each component you want to render
 Example:
 ```js
 import React from 'react'
-import { Line } from 'react-letgra'
+import { Line } from 'react-legra'
 
 function MyComponent() {
 
@@ -59,20 +59,26 @@ function MyComponent() {
 
 **Referenced Render:**
 
-You can use the `ctx` prop to the component (which is available for all components) to reference it to a canvas element
+You can use the `ctx` prop (which is available for all components) to reference it to a canvas element
 
 ```js
-import React, { useRef } from 'react'
-import { Line } from 'react-letgra'
+import React, { useRef, useEffect } from 'react'
+import { Line } from 'react-legra'
 
 function MyComponent() {
   const canvasRef = useRef(null)
+  const [customCtx, setContext] = useState(null)
 
   const p1 = [3, 3]
   const p2 = [10, 10]
   const p3 = [5, 0]
   const p4 = [10, 10]
-  const customCtx = canvasRef.current && canvasRef.getContext('2d')
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      setContext(canvasRef.current)
+    }
+  })
 
   return (
     <>
@@ -90,7 +96,7 @@ This works pretty much the same as the Referenced Render, but you can avoid the 
 
 ```js
 import React from 'react'
-import Board, { Line } from 'react-letgra'
+import Board, { Line } from 'react-legra'
 
 function MyComponent() {
 
