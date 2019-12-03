@@ -13,8 +13,6 @@ function LineBasicExample () {
     setOptions([randomPoint(), randomPoint()])
   }
 
-  console.log('options', options)
-
   return (
     <div>
       <button onClick={click}>Change</button>
