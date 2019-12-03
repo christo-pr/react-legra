@@ -164,6 +164,25 @@ function MyComponent() {
 ```
 -----------------------------------------------------------
 
+#### `<Image />`
+
+Draw a line from `(x1, y1)` to `(x2, y2)`
+
+|         prop        |  type   | default |
+|:-------------------:|:-------:|:-------:|
+| src **required**) | String |    -    |
+
+```js
+import { Image } from 'react-letgra'
+
+function MyComponent() {
+
+  return (
+    <Image src="https://image.redbull.com/rbcom/010/2016-08-31/1331815085727_1/0100/0/1/leroy-bellet-behind-the-lens-1.jpg" />
+}
+```
+-----------------------------------------------------------
+
 ## Development
 
 You'll need run two process (2 tabs) for development:
