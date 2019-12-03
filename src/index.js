@@ -1,22 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// Board Component
+import Board from './components/Board'
+export default Board
 
-import styles from './styles.css'
-
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
-}
+// Line Component
+export * from './components/Line'

@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import ExampleComponent from 'react-legra'
+import LineBasic from './examples/LineBasic'
+import LineRefRender from './examples/LineRefRender'
+import LineBoard from './examples/LineBoard'
 
-export default class App extends Component {
-  render () {
-    return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
-    )
-  }
+export default function App() {
+
+  return (
+    // <LineBasic />
+    // <LineRefRender />
+    <LineBoard />
+  );
 }
