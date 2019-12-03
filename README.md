@@ -142,6 +142,28 @@ function MyComponent() {
 ```
 -----------------------------------------------------------
 
+#### `<Rectangle />`
+
+Draw a rectangle given the top-left coordenates [x, y], width and height
+
+|         prop        |  type   | default |
+|:-------------------:|:-------:|:-------:|
+| start (**required**) | Array[x, y] |    -    |
+
+```js
+import { Rectangle } from 'react-letgra'
+
+function MyComponent() {
+
+  const start = [3, 3]
+
+  return (
+    <Rectangle start={start} />
+  )
+}
+```
+-----------------------------------------------------------
+
 ## Development
 
 You'll need run two process (2 tabs) for development:
