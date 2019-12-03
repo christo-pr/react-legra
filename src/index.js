@@ -8,5 +8,8 @@ export * from './components/Line'
 // Rectangle Component
 export * from './components/Rectangle'
 
+// Image Component
+export * from './components/Image'
+
 // Linear Path Component
 export * from './components/LinearPath'
