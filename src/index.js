@@ -7,3 +7,6 @@ export * from './components/Line'
 
 // Rectangle Component
 export * from './components/Rectangle'
+
+// Linear Path Component
+export * from './components/LinearPath'

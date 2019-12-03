@@ -146,9 +146,11 @@ function MyComponent() {
 
 Draw a rectangle given the top-left coordenates [x, y], width and height
 
-|         prop        |  type   | default |
-|:-------------------:|:-------:|:-------:|
-| start (**required**) | Array[x, y] |    -    |
+|         prop        |      type     | default |
+|:-------------------:|:-------------:|:-------:|
+| start (**required**)  | Array[x, y] |    -    |
+| width (**required**)  | Integer     |    -    |
+| height (**required**) | Integer     |    -    |
 
 ```js
 import { Rectangle } from 'react-legra'
@@ -162,6 +164,30 @@ function MyComponent() {
   )
 }
 ```
+-----------------------------------------------------------
+
+#### `<LinearPath />`
+
+Draws a set of lines connecting the specified points. points is an array of points.
+Each point is an array with 2 values - [x, y]
+
+|         prop        |                     type                        | default |
+|:-------------------:|:-----------------------------------------------:|:-------:|
+| points (**required**) | Array[[x1, y1], [x2, y2], [x3, y3], [x4, y4]] |    -    |
+
+```js
+import { LinearPath } from 'react-legra'
+
+function MyComponent() {
+
+  const points = [[3, 3], [12, 3], [3, 12], [12, 12]]
+
+  return (
+    <LinearPath points={points} />
+  )
+}
+```
+
 -----------------------------------------------------------
 
 ## Development
