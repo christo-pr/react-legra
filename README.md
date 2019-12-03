@@ -128,7 +128,7 @@ Draw a line from `(x1, y1)` to `(x2, y2)`
 
 
 ```js
-import { Line } from 'react-letgra'
+import { Line } from 'react-legra'
 
 function MyComponent() {
 
@@ -151,14 +151,14 @@ Draw a rectangle given the top-left coordenates [x, y], width and height
 | start (**required**) | Array[x, y] |    -    |
 
 ```js
-import { Rectangle } from 'react-letgra'
+import { Rectangle } from 'react-legra'
 
 function MyComponent() {
 
   const start = [3, 3]
 
   return (
-    <Rectangle start={start} />
+    <Rectangle start={start} width={10} height={15} />
   )
 }
 ```
