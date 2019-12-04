@@ -19,7 +19,7 @@ export function Circle (props) {
         ctx.clearRect(0, 0, cnvs.width, cnvs.height);
       }
 
-      // Draw the linear path
+      // Draw the circle
       legra.circle(...center, radius, options)
     }
   }, [canvasRef, props])

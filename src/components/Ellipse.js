@@ -19,7 +19,7 @@ export function Ellipse (props) {
         ctx.clearRect(0, 0, cnvs.width, cnvs.height);
       }
 
-      // Draw the linear path
+      // Draw the an ellipse
       legra.ellipse(...center, hAxis, vAxis, options)
     }
   }, [canvasRef, props])
