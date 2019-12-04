@@ -1,5 +1,9 @@
 # react-legra
 
+<div align="center">
+<img src="./docs/react-legra.png">
+</div>
+
 > Draw LEGO like brik shapes using [legrajs](https://github.com/pshihn/legra) and Reactjs
 
 [![NPM](https://img.shields.io/npm/v/react-legra.svg)](https://www.npmjs.com/package/react-legra) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
