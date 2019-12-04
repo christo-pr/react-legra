@@ -209,6 +209,56 @@ function MyComponent() {
 ```
 -----------------------------------------------------------
 
+#### `<Circle />`
+
+Draws a circle from the `center` point and with the given `radius`
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
+| radius (**required**) | Integer |    -    |
+
+```js
+import { Circle } from 'react-legra'
+
+function MyComponent() {
+
+  const center = [5, 5]
+  const radius = 10
+
+  return (
+    <Circle center={center} radius={radius} />
+  )
+}
+```
+-----------------------------------------------------------
+
+#### `<Ellipse />`
+
+Draws an ellipse from the `center` propm, with `v-axis` and `h-axis` for the vertical and horizontal axis lenght
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
+| v-axis (**required**) | Integer |    -    |
+| h-axis (**required**) | Integer |    -    |
+
+```js
+import { Ellipse } from 'react-legra'
+
+function MyComponent() {
+
+  const center = [5, 5]
+
+  return (
+    <Ellipse center={center} v-axis={5} h-axis={10} />
+  )
+}
+```
+
+-----------------------------------------------------------
+
+
 ## Development
 
 You'll need run two process (2 tabs) for development:
