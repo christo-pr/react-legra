@@ -6,7 +6,7 @@ import LineBoard from './examples/LineBoard'
 import ImageBasic from './examples/ImageBasic'
 import RectangleBasic from './examples/Rectangle'
 import LinearPathBasic from './examples/LinearPathBasic'
-import CircleEllipse from './examples/CircleEllipse'
+import Circle from './examples/Circle'
 
 export default function App() {
 
@@ -25,7 +25,7 @@ export default function App() {
         <LinearPathBasic />
       </div>
       <div>
-        <CircleEllipse />
+        <Circle />
       </div>
     </div>
   );

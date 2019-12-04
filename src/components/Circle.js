@@ -4,8 +4,20 @@ import React, { useEffect, useRef } from 'react'
 import Legra from 'legra'
 
 export function Circle (props) {
-  const { center, radius, options = {}, bs = 24, ctx = null } = props
+  const {
+    center,
+    radius = 10,
+    vAxis = null,
+    hAxis = null,
+    start = null,
+    stop = null,
+    closed = null,
+    options = {},
+    bs = 24,
+    ctx = null
+  } = props
   const canvasRef = useRef(null)
+  const functions = { circle: Legra.prototype.circle, arc: Legra.prototype.arc, ellipse: Legra.prototype.ellipse }
 
   useEffect(() => {
     const cnvs = ctx ? ctx : canvasRef.current ? canvasRef.current : null
@@ -19,8 +31,23 @@ export function Circle (props) {
         ctx.clearRect(0, 0, cnvs.width, cnvs.height);
       }
 
-      // Draw the circle
-      legra.circle(...center, radius, options)
+      let fn = 'circle'
+      let params = [...center, radius]
+
+      if (vAxis !== null) {
+        fn = 'ellipse'
+        params = [...center, hAxis, vAxis]
+      }
+
+      if (start !== null) {
+        fn = 'arc'
+        params.push(start, stop, closed)
+      }
+
+      params.push(options)
+
+      // Draw the component
+      functions[fn].apply(legra, params)
     }
   }, [canvasRef, props])
 

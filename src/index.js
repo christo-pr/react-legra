@@ -16,6 +16,3 @@ export * from './components/LinearPath'
 
 // Circle
 export * from './components/Circle'
-
-// Ellipse
-export * from './components/Ellipse'
