@@ -7,6 +7,7 @@ import ImageBasic from './examples/ImageBasic'
 import RectangleBasic from './examples/Rectangle'
 import LinearPathBasic from './examples/LinearPathBasic'
 import Circle from './examples/Circle'
+import PolygonBasic from './examples/PolygonBasic'
 
 export default function App() {
 
@@ -26,6 +27,9 @@ export default function App() {
       </div>
       <div>
         <Circle />
+      </div>
+      <div>
+        <PolygonBasic />
       </div>
     </div>
   );

@@ -16,3 +16,6 @@ export * from './components/LinearPath'
 
 // Circle
 export * from './components/Circle'
+
+// Polygon
+export * from './components/Polygon'
