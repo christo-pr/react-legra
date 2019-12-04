@@ -235,13 +235,13 @@ function MyComponent() {
 
 #### `<Ellipse />`
 
-Draws an ellipse from the `center` propm, with `v-axis` and `h-axis` for the vertical and horizontal axis lenght
+Draws an ellipse from the `center` propm, with `vAxis` and `hAxis` for the vertical and horizontal axis lenght
 
 |         prop        |        type     | default |
 |:-------------------:|:---------------:|:-------:|
 | center (**required**) | Array[xc, yc] |    -    |
-| v-axis (**required**) | Integer |    -    |
-| h-axis (**required**) | Integer |    -    |
+| vAxis (**required**) | Integer |    -    |
+| hAxis (**required**) | Integer |    -    |
 
 ```js
 import { Ellipse } from 'react-legra'
@@ -251,7 +251,7 @@ function MyComponent() {
   const center = [5, 5]
 
   return (
-    <Ellipse center={center} v-axis={5} h-axis={10} />
+    <Ellipse center={center} vAxis={5} hAxis={10} />
   )
 }
 ```
