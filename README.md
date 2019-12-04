@@ -199,7 +199,7 @@ Draw a line from `(x1, y1)` to `(x2, y2)`
 | src **required**) | String |    -    |
 
 ```js
-import { Image } from 'react-letgra'
+import { Image } from 'react-legra'
 
 function MyComponent() {
 
@@ -208,6 +208,46 @@ function MyComponent() {
 }
 ```
 -----------------------------------------------------------
+
+#### `<Circle />`
+
+This component have 3 behaviors depending on the props you passed in
+
+* Circle:
+  Draws a circle from the `center` point and with the given `radius`
+
+* Ellipse:
+  Draws an ellipse from the `center` point and the horizontal and vertical axis lenght controlled by `hAxis` and `vAxis` props
+
+* Arc:
+  An arc is just a **section** of an ellipse controlled by the additional `start` and `stop` props which represent the angle of the arc, also you can _"close"_ the arc form by these 2 props with the `filled` prop set to true
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
+| radius | Integer |    10    |
+| hAxis | Integer |    null    |
+| vAxis | Integer |    null    |
+| start | Integer |    null    |
+| stop | Integer |    null    |
+| filled | Boolean |    false    |
+
+```js
+import { Circle } from 'react-legra'
+
+function MyComponent() {
+
+  const center = [5, 5]
+
+  return (
+    <Circle center={center} radius={5} /> // Complete circle
+    <Circle center={center} vAxis={7} hAxis={10} options={{ color: 'red' }} /> // Ellipse
+    <Circle center={center} vAxis={12} hAxis={12} start={0} stop={Math.PI * .5} closed={false} options={{ color: 'green' }} /> // Arc
+  )
+}
+```
+-----------------------------------------------------------
+
 
 ## Development
 

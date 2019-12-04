@@ -13,3 +13,6 @@ export * from './components/Image'
 
 // Linear Path Component
 export * from './components/LinearPath'
+
+// Circle
+export * from './components/Circle'
