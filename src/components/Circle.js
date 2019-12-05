@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Legra from 'legra'
 
 export function Circle (props) {
