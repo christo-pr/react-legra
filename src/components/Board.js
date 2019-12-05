@@ -1,31 +1,34 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, Fragment } from 'react'
 
-function Board(props) {
-  const { height = 500, width = 1000 } = props;
-  const canvasRef = useRef(null);
-  const [elements, setElements] = useState(null);
+function Board (props) {
+  const { height = 200, width = 200, canvas = null } = props
+  const canvasRef = useRef(null)
+  const [canvasBoard, setCanvasBoard] = useState(canvas)
 
   useEffect(() => {
-    if (canvasRef.current) {
-      const childs = React.Children.map(props.children, children => {
-        return React.cloneElement(children, { ctx: canvasRef.current });
-      });
-
-      setElements(childs);
-    }
-  }, []);
+    if (canvasBoard) return
+    setCanvasBoard({ ...canvasRef }.current)
+  }, [canvasRef])
 
   return (
-    <div>
-      <canvas
-        ref={canvasRef}
-        style={{ border: "2px dotted red" }}
-        height={height}
-        width={width}
-      ></canvas>
-      {elements}
-    </div>
-  );
+    <Fragment>
+      {
+        !canvas ? (
+          <canvas
+            ref={canvasRef}
+            style={{ border: '2px dotted red', margin: '10px 10px' }}
+            height={height}
+            width={width}
+          ></canvas>
+        ) : null
+      }
+      {
+        React.Children.map(props.children, children => {
+          return React.cloneElement(children, { c: canvasBoard })
+        })
+      }
+    </Fragment>
+  )
 }
 
 export default Board

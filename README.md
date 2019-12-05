@@ -4,11 +4,11 @@
 <img src="./docs/react-legra.png">
 </div>
 
-> Draw LEGO like brik shapes using [legrajs](https://github.com/pshihn/legra) and Reactjs
+> Draw LEGO like brik shapes using [legraJS](https://github.com/pshihn/legra) and Reactjs
 
 [![NPM](https://img.shields.io/npm/v/react-legra.svg)](https://www.npmjs.com/package/react-legra) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-React-legra provides a wrap around the common components of legraJS
+**react-legra** provides a wrap around the common components of legraJS
 
 ## Install
 
@@ -22,7 +22,7 @@ yarn add react-legra
 
 ## Usage
 
-All components recieve an optional `options` prop as a configuration object:
+All components but `<Board />`, recieve an optional `options` prop as a configuration object:
 
 ```js
 {
@@ -31,72 +31,14 @@ All components recieve an optional `options` prop as a configuration object:
 }
 ```
 
-There are 3 ways to render all components
+##### Draw in a **`<Board />`:**
 
-**Basic Render:**
+First, you'll need a **board** where you can draw. The `<Board />` component can help you with this.
+Additionaly this component recieve a `canvas` prop to use an external canvas
 
-The basic render will create a canvas for each component you want to render
-
-Example:
-```js
-import React from 'react'
-import { Line } from 'react-legra'
-
-function MyComponent() {
-
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-
-  const p3 = [5, 0]
-  const p4 = [10, 10]
-
-  return (
-    <>
-      // Each components have it's own <canvas> element
-      <Line from={p1} to={p2} />
-      <Line from={p3} to={p4} />
-    </>
-  )
-}
-```
-
-
-**Referenced Render:**
-
-You can use the `ctx` prop (which is available for all components) to reference it to a canvas element
-
-```js
-import React, { useRef, useEffect } from 'react'
-import { Line } from 'react-legra'
-
-function MyComponent() {
-  const canvasRef = useRef(null)
-  const [customCtx, setContext] = useState(null)
-
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-  const p3 = [5, 0]
-  const p4 = [10, 10]
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      setContext(canvasRef.current)
-    }
-  })
-
-  return (
-    <>
-      <canvas ref={canvasRef}></canvas>
-      <Line from={p1} to={p2} ctx={customCtx} />
-      <Line from={p3} to={p4} ctx={customCtx} />
-    </>
-  )
-}
-```
-
-**Using `<Board />` Component:**
-
-This works pretty much the same as the Referenced Render, but you can avoid the use of multiple `ctx` prop on all of your components
+|         prop        |  type   | default |
+|:-------------------:|:-------:|:-------:|
+| canvas | object |    -    |
 
 ```js
 import React from 'react'
@@ -104,15 +46,11 @@ import Board, { Line } from 'react-legra'
 
 function MyComponent() {
 
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-  const p3 = [5, 0]
-  const p4 = [10, 10]
-
   return (
     <Board>
-      <Line from={p1} to={p2} />
-      <Line from={p3} to={p4} />
+      <Line from={[3, 3]} to={[10, 10]} />
+      // or
+      // <Board.Line from={[5, 0]} to={[10, 10]} />
     </Board>
   )
 }
@@ -130,25 +68,26 @@ Draw a line from `(x1, y1)` to `(x2, y2)`
 | from (**required**) | Array[x1, y1] |    -    |
 | to (**required**)   | Array[x2, y2] |    -    |
 
+![line](./docs/line.png)
 
 ```js
-import { Line } from 'react-legra'
+import Board, { Line } from 'react-legra'
 
 function MyComponent() {
 
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-
   return (
-    <Line from={p1} to={p2}>
+    <Board>
+      <Line from={[1, 1]} to={[3, 3]} options={{ color: 'green' }} />
+    </Board>
   )
 }
 ```
+
 -----------------------------------------------------------
 
 #### `<Rectangle />`
 
-Draw a rectangle given the top-left coordenates [x, y], width and height
+Draw a rectangle given the top-left coordenates [x, y] (`start`) as the center point and with the specified `width` and `height`
 
 |         prop        |      type     | default |
 |:-------------------:|:-------------:|:-------:|
@@ -156,15 +95,17 @@ Draw a rectangle given the top-left coordenates [x, y], width and height
 | width (**required**)  | Integer     |    -    |
 | height (**required**) | Integer     |    -    |
 
+![line](./docs/rectangle.png)
+
 ```js
-import { Rectangle } from 'react-legra'
+import Board, { Rectangle } from 'react-legra'
 
 function MyComponent() {
 
-  const start = [3, 3]
-
   return (
-    <Rectangle start={start} width={10} height={15} />
+    <Board>
+      <Rectangle start={[.2, 3]} width={8} height={2}/>
+    </Board>
   )
 }
 ```
@@ -172,22 +113,25 @@ function MyComponent() {
 
 #### `<LinearPath />`
 
-Draws a set of lines connecting the specified points. points is an array of points.
-Each point is an array with 2 values - [x, y]
+Draw a set of lines connecting the specified points. `points` is an array of arrays of points `(x, y)`.
 
-|         prop        |                     type                        | default |
-|:-------------------:|:-----------------------------------------------:|:-------:|
-| points (**required**) | Array[[x1, y1], [x2, y2], [x3, y3], [x4, y4]] |    -    |
+|         prop        |                type               | default
+|:-------------------:|:---------------------------------:|:-------:|
+| points (**required**) | Array[[x1, y1], [x2, y2]...] |    -    |
+
+![linear](./docs/linear.png)
 
 ```js
-import { LinearPath } from 'react-legra'
+import Board, { LinearPath } from 'react-legra'
 
 function MyComponent() {
 
-  const points = [[3, 3], [12, 3], [3, 12], [12, 12]]
+  const points = [[1, 1], [4, 1], [1, 4], [4, 4]]
 
   return (
-    <LinearPath points={points} />
+    <Board>
+      <LinearPath points={points} />
+    </Board>
   )
 }
 ```
@@ -196,40 +140,87 @@ function MyComponent() {
 
 #### `<Image />`
 
-Draw a line from `(x1, y1)` to `(x2, y2)`
+Draw an image with Legos!!!
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
-| src **required**) | String |    -    |
+| src (**required**) | String |    -    |
+
+![image](./docs/image.png)
 
 ```js
-import { Image } from 'react-legra'
+import Board, { Image } from 'react-legra'
 
 function MyComponent() {
 
   return (
-    <Image src="https://image.redbull.com/rbcom/010/2016-08-31/1331815085727_1/0100/0/1/leroy-bellet-behind-the-lens-1.jpg" />
+    <Board>
+      <Image src="/spong.jpg" bs={8} />
+    </Board>
 }
 ```
 -----------------------------------------------------------
 
 #### `<Circle />`
 
-This component have 3 behaviors depending on the props you passed in
-
-* Circle:
-  Draws a circle from the `center` point and with the given `radius`
-
-* Ellipse:
-  Draws an ellipse from the `center` point and the horizontal and vertical axis lenght controlled by `hAxis` and `vAxis` props
-
-* Arc:
-  An arc is just a **section** of an ellipse controlled by the additional `start` and `stop` props which represent the angle of the arc, also you can _"close"_ the arc form by these 2 props with the `filled` prop set to true
+Draw a circle from the `center` point and with the given `radius`
 
 |         prop        |        type     | default |
 |:-------------------:|:---------------:|:-------:|
 | center (**required**) | Array[xc, yc] |    -    |
 | radius | Integer |    10    |
+
+![circle](./docs/circle.png)
+
+```js
+import Board, { Circle } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <Circle center={[3, 3]} radius={2} />
+    </Board>
+  )
+}
+```
+-----------------------------------------------------------
+
+#### `<Ellipse />`
+
+
+Draw an ellipse from the `center` point and the horizontal and vertical axis lenght controlled by `hAxis` and `vAxis` props
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
+| hAxis | Integer |    null    |
+| vAxis | Integer |    null    |
+
+![ellipse](./docs/ellipse.png)
+
+```js
+import Board, { Ellipse } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <Ellipse center={[3, 3]} vAxis={2} hAxis={3} />
+    </Board>
+}
+```
+----------------------------------------------------------
+
+#### `<Arc />`
+
+![arc](./docs/arc.png)
+
+An arc is just a **section** of an ellipse controlled by the additional `start` and `stop` props which represent the angle of the arc, also you can _"close"_ the arc form by these 2 points with the `filled` prop set to true
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
 | hAxis | Integer |    null    |
 | vAxis | Integer |    null    |
 | start | Integer |    null    |
@@ -237,21 +228,54 @@ This component have 3 behaviors depending on the props you passed in
 | filled | Boolean |    false    |
 
 ```js
-import { Circle } from 'react-legra'
+import Board, { Ellipse } from 'react-legra'
 
 function MyComponent() {
 
-  const center = [5, 5]
+  return (
+    <Board>
+      <Board.Arc center={[5, 3]} vAxis={4} hAxis={5} start={Math.PI} stop={Math.PI * .5} />
+      <Board.Arc
+        center={[8, 0]}
+        options={{ color: 'pink'}}
+        vAxis={5}
+        hAxis={5}
+        start={Math.PI}
+        stop={-Math.PI * .5} />
+    </Board>
+}
+```
+---------------------------------------------------------
+
+#### `<Polygon />`
+
+Draw a polygon with the given `vertices`
+
+|         prop        |  type   | default |
+|:-------------------:|:-------:|:-------:|
+| vertices (**required**) | Array[[]] |    -    |
+
+![polygon](./docs/polygon.png)
+
+```js
+import Board, { Polygon } from 'react-legra'
+
+function MyComponent() {
+
+  const vertices = [
+    [0, 0],
+    [0, 7],
+    [7, 0],
+    [7, 7]
+ ]
 
   return (
-    <Circle center={center} radius={5} /> // Complete circle
-    <Circle center={center} vAxis={7} hAxis={10} options={{ color: 'red' }} /> // Ellipse
-    <Circle center={center} vAxis={12} hAxis={12} start={0} stop={Math.PI * .5} closed={false} options={{ color: 'green' }} /> // Arc
-  )
+    <Board>
+      <Polygon vertices={vertices} options={{ color: 'yellow' }} />
+    </Board>
 }
 ```
 -----------------------------------------------------------
-
 
 ## Development
 

@@ -1,31 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import Legra from 'legra'
 
 export function LinearPath (props) {
-  const { points, options = {}, bs = 24, ctx = null } = props
-  const canvasRef = useRef(null)
+  const { points, options = {}, bs = 24, c = null } = props
 
   useEffect(() => {
-    const cnvs = ctx ? ctx : canvasRef.current ? canvasRef.current : null
+    if (!c) return
 
-    if (cnvs) {
-      const ctx = cnvs.getContext('2d');
-      const legra = new Legra(ctx, bs);
+    const ctx = c.getContext('2d')
+    const legra = new Legra(ctx, bs)
 
-      // Reset canvas only on basic render
-      if (!ctx) {
-        ctx.clearRect(0, 0, cnvs.width, cnvs.height);
-      }
+    // Draw the linear path
+    legra.linearPath(points, options)
+  }, [points, options, bs, c])
 
-      // Draw the linear path
-      legra.linearPath(points, options)
-    }
-  }, [canvasRef, props])
-
-
-  if (ctx) return null
-
-  return (
-    <canvas ref={canvasRef} width='500' height='400' style={{ border: '1px solid black'}}></canvas>
-  )
+  return null
 }

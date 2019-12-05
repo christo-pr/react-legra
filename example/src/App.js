@@ -1,36 +1,26 @@
 import React from 'react'
 
-import LineBasic from './examples/LineBasic'
-import LineRefRender from './examples/LineRefRender'
-import LineBoard from './examples/LineBoard'
-import ImageBasic from './examples/ImageBasic'
-import RectangleBasic from './examples/Rectangle'
-import LinearPathBasic from './examples/LinearPathBasic'
-import Circle from './examples/Circle'
-import PolygonBasic from './examples/PolygonBasic'
+import LineExample from './examples/LineExample'
+import LinearPathExample from './examples/LinearPathExample'
+import CircleExample from './examples/CircleExample'
+import ImageExample from './examples/ImageExample'
+import RectangleExample from './examples/RectangleExample'
+import PolygonExample from './examples/PolygonExample'
+import EllipseExample from './examples/EllipseExample'
+import ArcExample from './examples/ArcExample'
 
 export default function App() {
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap'}}>
-      <div>
-        <LineBasic />
-      </div>
-      <div>
-        <LineRefRender />
-      </div>
-      <div>
-        <LineBoard />
-      </div>
-      <div>
-        <LinearPathBasic />
-      </div>
-      <div>
-        <Circle />
-      </div>
-      <div>
-        <PolygonBasic />
-      </div>
+      <LineExample />
+      <LinearPathExample />
+      <CircleExample />
+      <ImageExample />
+      <RectangleExample />
+      <PolygonExample />
+      <EllipseExample />
+      <ArcExample />
     </div>
-  );
+  )
 }
