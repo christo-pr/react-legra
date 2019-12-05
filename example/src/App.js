@@ -1,36 +1,28 @@
 import React from 'react'
 
-import LineBasic from './examples/LineBasic'
-import LineRefRender from './examples/LineRefRender'
-import LineBoard from './examples/LineBoard'
-import ImageBasic from './examples/ImageBasic'
-import RectangleBasic from './examples/Rectangle'
-import LinearPathBasic from './examples/LinearPathBasic'
-import Circle from './examples/Circle'
-import PolygonBasic from './examples/PolygonBasic'
+import LineExample from './examples/LineExample'
+import LinearPathExample from './examples/LinearPathExample'
+// import LineRefRender from './examples/LineRefRender'
+// import LineBoard from './examples/LineBoard'
+// import ImageBasic from './examples/ImageBasic'
+// import RectangleBasic from './examples/Rectangle'
+// import Circle from './examples/Circle'
+// import PolygonBasic from './examples/PolygonBasic'
 
 export default function App() {
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap'}}>
-      <div>
-        <LineBasic />
-      </div>
-      <div>
-        <LineRefRender />
-      </div>
-      <div>
-        <LineBoard />
-      </div>
-      <div>
-        <LinearPathBasic />
+      <LineExample />
+      <LinearPathExample />
+      {/* <div>
       </div>
       <div>
         <Circle />
       </div>
       <div>
         <PolygonBasic />
-      </div>
+      </div>  */}
     </div>
   );
 }

@@ -22,7 +22,7 @@ yarn add react-legra
 
 ## Usage
 
-All components recieve an optional `options` prop as a configuration object:
+All components but `<Board />`, recieve an optional `options` prop as a configuration object:
 
 ```js
 {
@@ -31,9 +31,9 @@ All components recieve an optional `options` prop as a configuration object:
 }
 ```
 
-**`<Board />`:**
+##### Draw in a **`<Board />`:**
 
-First, you'll need a **board** where you can draw. You can use the `<Board />` to achieve this. Additionaly this component recieve a `canvas` prop to use an external canvas
+First, you'll need a **board** where you can draw. The `<Board />` can achieve this. Additionaly this component recieve a `canvas` prop to use an external canvas
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
@@ -83,7 +83,7 @@ function MyComponent() {
 
 #### `<Rectangle />`
 
-Draw a rectangle given the top-left coordenates [x, y], width and height
+Draw a rectangle given the top-left coordenates [x, y] (`start`) as the center point and with the specified `width` and `height`
 
 |         prop        |      type     | default |
 |:-------------------:|:-------------:|:-------:|
@@ -107,12 +107,11 @@ function MyComponent() {
 
 #### `<LinearPath />`
 
-Draws a set of lines connecting the specified points. points is an array of points.
-Each point is an array with 2 values - [x, y]
+Draws a set of lines connecting the specified points. `points` is an array of arrays with 2 integers on it (x, y).
 
-|         prop        |                     type                        | default |
-|:-------------------:|:-----------------------------------------------:|:-------:|
-| points (**required**) | Array[[x1, y1], [x2, y2], [x3, y3], [x4, y4]] |    -    |
+|         prop        |                type               | default
+|:-------------------:|:---------------------------------:|:-------:|
+| points (**required**) | Array[[x1, y1], [x2, y2]...] |    -    |
 
 ```js
 import Board, { LinearPath } from 'react-legra'
@@ -133,7 +132,7 @@ function MyComponent() {
 
 #### `<Image />`
 
-Draw a line from `(x1, y1)` to `(x2, y2)`
+Draw an image with Legos!!!
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
