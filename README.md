@@ -31,72 +31,13 @@ All components recieve an optional `options` prop as a configuration object:
 }
 ```
 
-There are 3 ways to render all components
+**`<Board />`:**
 
-**Basic Render:**
+First, you'll need a **board** where you can draw. You can use the `<Board />` to achieve this. Additionaly this component recieve a `canvas` prop to use an external canvas
 
-The basic render will create a canvas for each component you want to render
-
-Example:
-```js
-import React from 'react'
-import { Line } from 'react-legra'
-
-function MyComponent() {
-
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-
-  const p3 = [5, 0]
-  const p4 = [10, 10]
-
-  return (
-    <>
-      // Each components have it's own <canvas> element
-      <Line from={p1} to={p2} />
-      <Line from={p3} to={p4} />
-    </>
-  )
-}
-```
-
-
-**Referenced Render:**
-
-You can use the `ctx` prop (which is available for all components) to reference it to a canvas element
-
-```js
-import React, { useRef, useEffect } from 'react'
-import { Line } from 'react-legra'
-
-function MyComponent() {
-  const canvasRef = useRef(null)
-  const [customCtx, setContext] = useState(null)
-
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-  const p3 = [5, 0]
-  const p4 = [10, 10]
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      setContext(canvasRef.current)
-    }
-  })
-
-  return (
-    <>
-      <canvas ref={canvasRef}></canvas>
-      <Line from={p1} to={p2} ctx={customCtx} />
-      <Line from={p3} to={p4} ctx={customCtx} />
-    </>
-  )
-}
-```
-
-**Using `<Board />` Component:**
-
-This works pretty much the same as the Referenced Render, but you can avoid the use of multiple `ctx` prop on all of your components
+|         prop        |  type   | default |
+|:-------------------:|:-------:|:-------:|
+| canvas | object |    -    |
 
 ```js
 import React from 'react'
@@ -104,15 +45,10 @@ import Board, { Line } from 'react-legra'
 
 function MyComponent() {
 
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-  const p3 = [5, 0]
-  const p4 = [10, 10]
-
   return (
     <Board>
-      <Line from={p1} to={p2} />
-      <Line from={p3} to={p4} />
+      <Line from={[3, 3]} to={[10, 10]} />
+      <Line from={[5, 0]} to={[10, 10]} />
     </Board>
   )
 }
@@ -132,15 +68,14 @@ Draw a line from `(x1, y1)` to `(x2, y2)`
 
 
 ```js
-import { Line } from 'react-legra'
+import Board, { Line } from 'react-legra'
 
 function MyComponent() {
 
-  const p1 = [3, 3]
-  const p2 = [10, 10]
-
   return (
-    <Line from={p1} to={p2}>
+    <Board>
+      <Line from={[3, 3]} to={[10, 10]}>
+    </Board>
   )
 }
 ```
@@ -157,14 +92,14 @@ Draw a rectangle given the top-left coordenates [x, y], width and height
 | height (**required**) | Integer     |    -    |
 
 ```js
-import { Rectangle } from 'react-legra'
+import Board, { Rectangle } from 'react-legra'
 
 function MyComponent() {
 
-  const start = [3, 3]
-
   return (
-    <Rectangle start={start} width={10} height={15} />
+    <Board>
+      <Rectangle start={[3, 3]} width={10} height={15} />
+    </Board>
   )
 }
 ```
@@ -180,14 +115,16 @@ Each point is an array with 2 values - [x, y]
 | points (**required**) | Array[[x1, y1], [x2, y2], [x3, y3], [x4, y4]] |    -    |
 
 ```js
-import { LinearPath } from 'react-legra'
+import Board, { LinearPath } from 'react-legra'
 
 function MyComponent() {
 
   const points = [[3, 3], [12, 3], [3, 12], [12, 12]]
 
   return (
-    <LinearPath points={points} />
+    <Board>
+      <LinearPath points={points} />
+    </Board>
   )
 }
 ```
@@ -203,12 +140,14 @@ Draw a line from `(x1, y1)` to `(x2, y2)`
 | src **required**) | String |    -    |
 
 ```js
-import { Image } from 'react-legra'
+import Board, { Image } from 'react-legra'
 
 function MyComponent() {
 
   return (
-    <Image src="https://image.redbull.com/rbcom/010/2016-08-31/1331815085727_1/0100/0/1/leroy-bellet-behind-the-lens-1.jpg" />
+    <Board>
+      <Image src="https://image.redbull.com/rbcom/010/2016-08-31/1331815085727_1/0100/0/1/leroy-bellet-behind-the-lens-1.jpg" />
+    </Board>
 }
 ```
 -----------------------------------------------------------
@@ -237,21 +176,43 @@ This component have 3 behaviors depending on the props you passed in
 | filled | Boolean |    false    |
 
 ```js
-import { Circle } from 'react-legra'
+import Board, { Circle } from 'react-legra'
 
 function MyComponent() {
 
   const center = [5, 5]
 
   return (
-    <Circle center={center} radius={5} /> // Complete circle
-    <Circle center={center} vAxis={7} hAxis={10} options={{ color: 'red' }} /> // Ellipse
-    <Circle center={center} vAxis={12} hAxis={12} start={0} stop={Math.PI * .5} closed={false} options={{ color: 'green' }} /> // Arc
+    <Board>
+      <Circle center={center} radius={5} /> // Complete circle
+      <Circle center={center} vAxis={7} hAxis={10} options={{ color: 'red' }} /> // Ellipse
+      <Circle center={center} vAxis={12} hAxis={12} start={0} stop={Math.PI * .5} closed={false} options={{ color: 'green' }} /> // Arc
+    </Board>
   )
 }
 ```
 -----------------------------------------------------------
 
+#### `<Polygon />`
+
+Draw a polygon with the given `vertices`
+
+|         prop        |  type   | default |
+|:-------------------:|:-------:|:-------:|
+| vertices **required**) | Array[[]] |    -    |
+
+```js
+import Board, { Polygon } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <Polygon vertices={[[3, 3], [12, 3], [3, 12], [12, 12]]} />
+    </Board>
+}
+```
+-----------------------------------------------------------
 
 ## Development
 
