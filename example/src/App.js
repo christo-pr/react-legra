@@ -1,13 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import ExampleComponent from 'react-legra'
+import LineExample from './examples/LineExample'
+import LinearPathExample from './examples/LinearPathExample'
+import CircleExample from './examples/CircleExample'
+import ImageExample from './examples/ImageExample'
+import RectangleExample from './examples/RectangleExample'
+import PolygonExample from './examples/PolygonExample'
+import EllipseExample from './examples/EllipseExample'
+import ArcExample from './examples/ArcExample'
 
-export default class App extends Component {
-  render () {
-    return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
-    )
-  }
+export default function App() {
+
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap'}}>
+      <LineExample />
+      <LinearPathExample />
+      <CircleExample />
+      <ImageExample />
+      <RectangleExample />
+      <PolygonExample />
+      <EllipseExample />
+      <ArcExample />
+    </div>
+  )
 }
