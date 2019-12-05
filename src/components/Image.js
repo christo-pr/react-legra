@@ -1,35 +1,23 @@
-import React, { useRef, useEffect } from 'react'
-
+import { useEffect } from 'react'
 import Legra from 'legra'
 
-export function RLImage(props) {
-  const { src, ctx = null, bs = 15 } = props;
-  const canvasRef = useRef(null);
+export function Image(props) {
+  const { src, width = 200, height = 200, bs = 15, c = null } = props
 
   useEffect(() => {
-    if (canvasRef.current) {
-      const cnvs = ctx ? ctx : canvasRef.current ? canvasRef.current : null
-      const img = new Image(700, 700)
-      img.src = src
+    if (!c) return
 
-      if (cnvs) {
-        const ctx = cnvs.getContext('2d');
-        const legra = new Legra(ctx, bs);
+    const ctx = c.getContext('2d')
+    const legra = new Legra(ctx, bs)
+    const img = new window.Image(width, height)
 
-        // Reset canvas only on basic render
-        if (!ctx) {
-          ctx.clearRect(0, 0, cnvs.width, cnvs.height);
-        }
+    img.src = src
+    img.onload = function() {
 
-        img.onload = function(){
-          // Draw the line
-          legra.drawImage(img, [0, 0])
-        }
-      }
+      // Draw the image once loaded
+      legra.drawImage(img, [0, 0])
     }
-  }, []);
+  }, [src, width, height, c])
 
-  return (
-    <canvas ref={canvasRef} width={1000} height={1000} style={{ border: '1px solid black'}}></canvas>
-  );
+  return null
 }
