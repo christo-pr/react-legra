@@ -17,7 +17,7 @@ export function Image(props) {
       // Draw the image once loaded
       legra.drawImage(img, [0, 0])
     }
-  }, [src, width, height, c])
+  }, [src, width, height, bs, c])
 
   return null
 }

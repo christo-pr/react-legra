@@ -1,9 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import Legra from 'legra'
 
 export function LinearPath (props) {
   const { points, options = {}, bs = 24, c = null } = props
-  const canvasRef = useRef(null)
 
   useEffect(() => {
     if (!c) return
@@ -14,7 +13,7 @@ export function LinearPath (props) {
     // Draw the linear path
     legra.linearPath(points, options)
 
-  }, [canvasRef, props])
+  }, [points, options, bs, c])
 
   return null
 

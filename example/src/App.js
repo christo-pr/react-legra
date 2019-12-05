@@ -6,6 +6,7 @@ import CircleExample from './examples/CircleExample'
 import ImageExample from './examples/ImageExample'
 import RectangleExample from './examples/RectangleExample'
 import PolygonExample from './examples/PolygonExample'
+import EllipseExample from './examples/EllipseExample'
 
 export default function App() {
 
@@ -17,13 +18,7 @@ export default function App() {
       <ImageExample />
       <RectangleExample />
       <PolygonExample />
-      {/* <div>
-      </div>
-      <div>
-      </div>
-      <div>
-        <PolygonBasic />
-      </div>  */}
+      <EllipseExample />
     </div>
-  );
+  )
 }

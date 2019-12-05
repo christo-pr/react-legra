@@ -12,7 +12,7 @@ export function Circle (props) {
 
     // Draw the circle
     legra.circle(...center, radius, options)
-  }, [center, radius, c])
+  }, [center, radius, options, bs, c])
 
   return null
 }

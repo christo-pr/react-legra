@@ -13,7 +13,7 @@ export function Rectangle (props) {
     // Draw the rectangle
     legra.rectangle(...start, width, height, options)
 
-  }, [start, width, height, bs, options])
+  }, [start, width, height, options, bs, c])
 
   return null
 }

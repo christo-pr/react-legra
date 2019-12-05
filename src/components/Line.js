@@ -12,7 +12,7 @@ export function Line (props) {
 
     // Draw the line
     legra.line(...from, ...to, options)
-  }, [from, to, c])
+  }, [from, to, options, bs, c])
 
   return null
 }
