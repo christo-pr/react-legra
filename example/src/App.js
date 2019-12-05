@@ -4,7 +4,7 @@ import LineExample from './examples/LineExample'
 import LinearPathExample from './examples/LinearPathExample'
 import CircleExample from './examples/CircleExample'
 import ImageExample from './examples/ImageExample'
-// import RectangleBasic from './examples/Rectangle'
+import RectangleExample from './examples/RectangleExample'
 // import PolygonBasic from './examples/PolygonBasic'
 
 export default function App() {
@@ -15,6 +15,7 @@ export default function App() {
       <LinearPathExample />
       <CircleExample />
       <ImageExample />
+      <RectangleExample />
       {/* <div>
       </div>
       <div>
