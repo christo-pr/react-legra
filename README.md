@@ -4,7 +4,7 @@
 <img src="./docs/react-legra.png">
 </div>
 
-> Draw LEGO like brik shapes using [legraJS](https://github.com/pshihn/legra) and Reactjs
+> Draw LEGO like brick shapes using [legraJS](https://github.com/pshihn/legra) and Reactjs
 
 [![NPM](https://img.shields.io/npm/v/react-legra.svg)](https://www.npmjs.com/package/react-legra) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -299,7 +299,7 @@ After that each change you do will be reflected on the demo app
 ## Contributors
 
 * Christofer Flores: [christo_pr](https://github.com/christo-pr)
-* Fernando Barajas: [christo_pr](https://github.com/christo-pr)
+* Fernando Barajas: [fernando_barajas](https://github.com/christo-pr)
 * Gibran Lopez: [GeDiez](https://github.com/GeDiez)
 
 ## License
