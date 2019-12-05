@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Legra from 'legra'
 
 export function Arc (props) {
-  const { center, vAxis, hAxis, start, stop, closed = false, options = {}, bs = 24, c = null} = props
+  const { center, vAxis, hAxis, start, stop, closed = false, options = {}, bs = 24, c = null } = props
 
   useEffect(() => {
     if (!c) return
@@ -16,4 +16,3 @@ export function Arc (props) {
 
   return null
 }
-

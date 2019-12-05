@@ -15,6 +15,7 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
+    "lint": "standard",
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
@@ -53,12 +54,20 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-url": "^1.4.0"
+    "rollup-plugin-url": "^1.4.0",
+    "standard": "^14.3.1"
   },
   "files": [
     "dist"
   ],
+  "standard": {
+    "ignore": [
+      "/example/*",
+      "*.config.js",
+      "/dist/*"
+    ]
+  },
   "dependencies": {
-    "legra": "^0.2.0"
+    "legra": "0.2.0"
   }
 }

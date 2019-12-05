@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Legra from 'legra'
 
 export function Rectangle (props) {
@@ -12,7 +12,6 @@ export function Rectangle (props) {
 
     // Draw the rectangle
     legra.rectangle(...start, width, height, options)
-
   }, [start, width, height, options, bs, c])
 
   return null

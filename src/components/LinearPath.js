@@ -12,9 +12,7 @@ export function LinearPath (props) {
 
     // Draw the linear path
     legra.linearPath(points, options)
-
   }, [points, options, bs, c])
 
   return null
-
 }

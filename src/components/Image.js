@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Legra from 'legra'
 
-export function Image(props) {
+export function Image (props) {
   const { src, width = 200, height = 200, bs = 15, c = null } = props
 
   useEffect(() => {
@@ -12,8 +12,7 @@ export function Image(props) {
     const img = new window.Image(width, height)
 
     img.src = src
-    img.onload = function() {
-
+    img.onload = function () {
       // Draw the image once loaded
       legra.drawImage(img, [0, 0])
     }

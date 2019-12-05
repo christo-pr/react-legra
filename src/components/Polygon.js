@@ -11,8 +11,7 @@ export function Polygon (props) {
     const legra = new Legra(ctx, bs)
 
     // Draw the polygon
-    legra.polygon(vertices, {...options, filled: true})
-
+    legra.polygon(vertices, { ...options, filled: true })
   }, [vertices, options, bs, c])
 
   return null

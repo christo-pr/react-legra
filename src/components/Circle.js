@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Legra from 'legra'
 
 export function Circle (props) {
-  const { center, radius = 10, options = {}, bs = 24, c = null} = props
+  const { center, radius = 10, options = {}, bs = 24, c = null } = props
 
   useEffect(() => {
     if (!c) return

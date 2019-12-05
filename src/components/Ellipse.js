@@ -12,7 +12,6 @@ export function Ellipse (props) {
 
     // Draw the ellipse
     legra.ellipse(...center, hAxis, vAxis, options)
-
   }, [center, vAxis, hAxis, bs, c])
 
   return null
