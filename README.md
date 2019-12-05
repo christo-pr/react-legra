@@ -4,11 +4,11 @@
 <img src="./docs/react-legra.png">
 </div>
 
-> Draw LEGO like brik shapes using [legrajs](https://github.com/pshihn/legra) and Reactjs
+> Draw LEGO like brik shapes using [legraJS](https://github.com/pshihn/legra) and Reactjs
 
 [![NPM](https://img.shields.io/npm/v/react-legra.svg)](https://www.npmjs.com/package/react-legra) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-React-legra provides a wrap around the common components of legraJS
+**react-legra** provides a wrap around the common components of legraJS
 
 ## Install
 
@@ -33,7 +33,8 @@ All components but `<Board />`, recieve an optional `options` prop as a configur
 
 ##### Draw in a **`<Board />`:**
 
-First, you'll need a **board** where you can draw. The `<Board />` can achieve this. Additionaly this component recieve a `canvas` prop to use an external canvas
+First, you'll need a **board** where you can draw. The `<Board />` component can help you with this.
+Additionaly this component recieve a `canvas` prop to use an external canvas
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
@@ -48,7 +49,8 @@ function MyComponent() {
   return (
     <Board>
       <Line from={[3, 3]} to={[10, 10]} />
-      <Line from={[5, 0]} to={[10, 10]} />
+      // or
+      // <Board.Line from={[5, 0]} to={[10, 10]} />
     </Board>
   )
 }
@@ -66,6 +68,7 @@ Draw a line from `(x1, y1)` to `(x2, y2)`
 | from (**required**) | Array[x1, y1] |    -    |
 | to (**required**)   | Array[x2, y2] |    -    |
 
+![line](./docs/line.png)
 
 ```js
 import Board, { Line } from 'react-legra'
@@ -74,11 +77,12 @@ function MyComponent() {
 
   return (
     <Board>
-      <Line from={[3, 3]} to={[10, 10]}>
+      <Line from={[1, 1]} to={[3, 3]} options={{ color: 'green' }} />
     </Board>
   )
 }
 ```
+
 -----------------------------------------------------------
 
 #### `<Rectangle />`
@@ -91,6 +95,8 @@ Draw a rectangle given the top-left coordenates [x, y] (`start`) as the center p
 | width (**required**)  | Integer     |    -    |
 | height (**required**) | Integer     |    -    |
 
+![line](./docs/rectangle.png)
+
 ```js
 import Board, { Rectangle } from 'react-legra'
 
@@ -98,7 +104,7 @@ function MyComponent() {
 
   return (
     <Board>
-      <Rectangle start={[3, 3]} width={10} height={15} />
+      <Rectangle start={[.2, 3]} width={8} height={2}/>
     </Board>
   )
 }
@@ -107,18 +113,20 @@ function MyComponent() {
 
 #### `<LinearPath />`
 
-Draws a set of lines connecting the specified points. `points` is an array of arrays with 2 integers on it (x, y).
+Draw a set of lines connecting the specified points. `points` is an array of arrays of points `(x, y)`.
 
 |         prop        |                type               | default
 |:-------------------:|:---------------------------------:|:-------:|
 | points (**required**) | Array[[x1, y1], [x2, y2]...] |    -    |
+
+![linear](./docs/linear.png)
 
 ```js
 import Board, { LinearPath } from 'react-legra'
 
 function MyComponent() {
 
-  const points = [[3, 3], [12, 3], [3, 12], [12, 12]]
+  const points = [[1, 1], [4, 1], [1, 4], [4, 4]]
 
   return (
     <Board>
@@ -136,7 +144,9 @@ Draw an image with Legos!!!
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
-| src **required**) | String |    -    |
+| src (**required**) | String |    -    |
+
+![image](./docs/image.png)
 
 ```js
 import Board, { Image } from 'react-legra'
@@ -145,7 +155,7 @@ function MyComponent() {
 
   return (
     <Board>
-      <Image src="https://image.redbull.com/rbcom/010/2016-08-31/1331815085727_1/0100/0/1/leroy-bellet-behind-the-lens-1.jpg" />
+      <Image src="/spong.jpg" bs={8} />
     </Board>
 }
 ```
@@ -153,21 +163,64 @@ function MyComponent() {
 
 #### `<Circle />`
 
-This component have 3 behaviors depending on the props you passed in
-
-* Circle:
-  Draws a circle from the `center` point and with the given `radius`
-
-* Ellipse:
-  Draws an ellipse from the `center` point and the horizontal and vertical axis lenght controlled by `hAxis` and `vAxis` props
-
-* Arc:
-  An arc is just a **section** of an ellipse controlled by the additional `start` and `stop` props which represent the angle of the arc, also you can _"close"_ the arc form by these 2 props with the `filled` prop set to true
+Draw a circle from the `center` point and with the given `radius`
 
 |         prop        |        type     | default |
 |:-------------------:|:---------------:|:-------:|
 | center (**required**) | Array[xc, yc] |    -    |
 | radius | Integer |    10    |
+
+![circle](./docs/circle.png)
+
+```js
+import Board, { Circle } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <Circle center={[3, 3]} radius={2} />
+    </Board>
+  )
+}
+```
+-----------------------------------------------------------
+
+#### `<Ellipse />`
+
+
+Draw an ellipse from the `center` point and the horizontal and vertical axis lenght controlled by `hAxis` and `vAxis` props
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
+| hAxis | Integer |    null    |
+| vAxis | Integer |    null    |
+
+![ellipse](./docs/ellipse.png)
+
+```js
+import Board, { Ellipse } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <Ellipse center={[3, 3]} vAxis={2} hAxis={3} />
+    </Board>
+}
+```
+----------------------------------------------------------
+
+#### `<Arc />`
+
+![arc](./docs/arc.png)
+
+An arc is just a **section** of an ellipse controlled by the additional `start` and `stop` props which represent the angle of the arc, also you can _"close"_ the arc form by these 2 points with the `filled` prop set to true
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| center (**required**) | Array[xc, yc] |    -    |
 | hAxis | Integer |    null    |
 | vAxis | Integer |    null    |
 | start | Integer |    null    |
@@ -175,22 +228,24 @@ This component have 3 behaviors depending on the props you passed in
 | filled | Boolean |    false    |
 
 ```js
-import Board, { Circle } from 'react-legra'
+import Board, { Ellipse } from 'react-legra'
 
 function MyComponent() {
 
-  const center = [5, 5]
-
   return (
     <Board>
-      <Circle center={center} radius={5} /> // Complete circle
-      <Circle center={center} vAxis={7} hAxis={10} options={{ color: 'red' }} /> // Ellipse
-      <Circle center={center} vAxis={12} hAxis={12} start={0} stop={Math.PI * .5} closed={false} options={{ color: 'green' }} /> // Arc
+      <Board.Arc center={[5, 3]} vAxis={4} hAxis={5} start={Math.PI} stop={Math.PI * .5} />
+      <Board.Arc
+        center={[8, 0]}
+        options={{ color: 'pink'}}
+        vAxis={5}
+        hAxis={5}
+        start={Math.PI}
+        stop={-Math.PI * .5} />
     </Board>
-  )
 }
 ```
------------------------------------------------------------
+---------------------------------------------------------
 
 #### `<Polygon />`
 
@@ -198,16 +253,25 @@ Draw a polygon with the given `vertices`
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
-| vertices **required**) | Array[[]] |    -    |
+| vertices (**required**) | Array[[]] |    -    |
+
+![polygon](./docs/polygon.png)
 
 ```js
 import Board, { Polygon } from 'react-legra'
 
 function MyComponent() {
 
+  const vertices = [
+    [0, 0],
+    [0, 7],
+    [7, 0],
+    [7, 7]
+ ]
+
   return (
     <Board>
-      <Polygon vertices={[[3, 3], [12, 3], [3, 12], [12, 12]]} />
+      <Polygon vertices={vertices} options={{ color: 'yellow' }} />
     </Board>
 }
 ```
