@@ -6,7 +6,6 @@ import { Polygon } from './components/Polygon'
 import { Ellipse } from './components/Ellipse'
 import { Image } from './components/Image'
 import { Arc } from './components/Arc'
-import { BezierCurve} from './components/BezierCurve'
 import Board from './components/Board'
 
 export { Line }
@@ -17,7 +16,6 @@ export { Polygon }
 export { Ellipse }
 export { Image }
 export { Arc }
-export { BezierCurve }
 
 Board.Line = Line
 Board.Rectangle = Rectangle
@@ -27,6 +25,5 @@ Board.Polygon = Polygon
 Board.Ellipse = Ellipse
 Board.Image = Image
 Board.Arc = Arc
-Board.BezierCurve = BezierCurve
 
 export default Board

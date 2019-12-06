@@ -1,6 +1,6 @@
 {
   "name": "react-legra",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Draw LEGO like briks using legrajs and Reactjs",
   "author": "christo-pr",
   "license": "MIT",
