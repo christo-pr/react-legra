@@ -34,11 +34,13 @@ All components but `<Board />`, recieve an optional `options` prop as a configur
 ##### Draw in a **`<Board />`:**
 
 First, you'll need a **board** where you can draw. The `<Board />` component can help you with this.
-Additionaly this component recieve a `canvas` prop to use an external canvas
+You can consider this component a canvas (it actually is a canvas), but you could additionally pass a custom prop named `canvas` with the canvas object that you can use to render all the components.
 
 |         prop        |  type   | default |
 |:-------------------:|:-------:|:-------:|
-| canvas | object |    -    |
+| canvas | Object |    -    |
+| width | Integer |    200    |
+| heigth | Integer |    200    |
 
 ```js
 import React from 'react'
