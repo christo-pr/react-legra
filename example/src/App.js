@@ -8,7 +8,6 @@ import RectangleExample from './examples/RectangleExample'
 import PolygonExample from './examples/PolygonExample'
 import EllipseExample from './examples/EllipseExample'
 import ArcExample from './examples/ArcExample'
-import BezierCurveExample from './examples/BezierCurveExample'
 
 export default function App() {
 
@@ -22,7 +21,6 @@ export default function App() {
       <PolygonExample />
       <EllipseExample />
       <ArcExample />
-      <BezierCurveExample />
     </div>
   )
 }
