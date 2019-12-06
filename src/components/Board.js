@@ -1,14 +1,20 @@
 import React, { useRef, useEffect, useState, Fragment } from 'react'
 
+import utils from '../utils'
+
 function Board (props) {
   const { canvas = null, width = 200, height = 200, ...canvasProps } = props
   const canvasRef = useRef(null)
   const [canvasBoard, setCanvasBoard] = useState(canvas)
 
+  if (canvasBoard) {
+    utils.cleanBoard(canvasBoard)
+  }
+
   useEffect(() => {
     if (canvasBoard) return
     setCanvasBoard({ ...canvasRef }.current)
-  }, [canvasRef])
+  }, [props])
 
   return (
     <Fragment>
