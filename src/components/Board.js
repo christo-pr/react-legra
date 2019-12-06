@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, Fragment } from 'react'
 
 function Board (props) {
-  const { height = 200, width = 200, canvas = null } = props
+  const { canvas = null, width = 200, height = 200, ...canvasProps } = props
   const canvasRef = useRef(null)
   const [canvasBoard, setCanvasBoard] = useState(canvas)
 
@@ -16,9 +16,9 @@ function Board (props) {
         !canvas ? (
           <canvas
             ref={canvasRef}
-            style={{ border: '2px dotted red', margin: '10px 10px' }}
-            height={height}
             width={width}
+            height={height}
+            {...canvasProps}
           ></canvas>
         ) : null
       }
