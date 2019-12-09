@@ -22,23 +22,19 @@ yarn add react-legra
 
 ## Usage
 
-All components but `<Board />`, recieve an optional `options` prop as a configuration object:
+To start drawing, you first need to create a canvas to draw on, the `<Board />` component will do that for you.
+
+The `<Board />` component recieve the same props as a `canvas` element, and additionally you can set the `canvas` prop, to reference all the drawing to an external canvas
+
+All the components but `<Board />`, recieve (optionally) some configuration props:
 
 ```js
-{
-  color?: string;
-  filled?: boolean;
-}
+options: { // To control the look and feel of the component
+  filled?: false,
+  color?: blue
+},
+bs: 24 // Brick size, default to 24
 ```
-
-##### Draw in a **`<Board />`:**
-
-First, you'll need a **board** where you can draw. The `<Board />` component can help you with this.
-Additionaly this component recieve a `canvas` prop to use an external canvas
-
-|         prop        |  type   | default |
-|:-------------------:|:-------:|:-------:|
-| canvas | object |    -    |
 
 ```js
 import React from 'react'
@@ -276,6 +272,60 @@ function MyComponent() {
 }
 ```
 -----------------------------------------------------------
+
+#### `<BezierCurve />`
+
+
+Draws a bézier curve from `(x1, y1)` to `(x2, y2)` with `(cp1x, cp1y)` and `(cp2x, cp2y)` as the curve's control points.
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| from (**required**) | Array[x1, y1]   |    -    |
+| to (**required**) | Array[x2, y2]   |    -    |
+| controlPointX (**required**) | Array[x1, y1]   |    -    |
+| controlPointY (**required**) | Array[x2, y2]   |    -    |
+
+![blizercurve](./docs/bezier_curve.png)
+
+```js
+import Board, { BeziearCurve } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <BezierCurve from={[3, 3]} to={[22, 14]} controlPointX={[8, 30]} controlPointX={[18, 1]} />
+    </Board>
+}
+```
+-----------------------------------------------------------
+
+#### `<QuadraticCurve />`
+
+
+Draws a quadratic curve from `(x1, y1)` to `(x2, y2)` with `(cpx, cpy)` as the curve's control point.
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| from (**required**) | Array[x1, y1]   |    -    |
+| to (**required**) | Array[x2, y2]   |    -    |
+| controlPoint (**required**) | Array[x1, y1, x2, y2]   |    -    |
+
+![quadraticcurve](./docs/quadratic_curve.png)
+
+```js
+import Board, { QuadraticCurve } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <QuadraticCurve from={[3, 3]} to={[22, 14]} controlPoint={[8, 30, 18, 1]} />
+    </Board>
+}
+```
+----------------------------------------------------------
+
 
 ## Development
 
