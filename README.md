@@ -22,25 +22,19 @@ yarn add react-legra
 
 ## Usage
 
-All components but `<Board />`, recieve an optional `options` prop as a configuration object:
+To start drawing, you first need to create a canvas to draw on, the `<Board />` component will do that for you.
+
+The `<Board />` component recieve the same props as a `canvas` element, and additionally you can set the `canvas` prop, to reference all the drawing to an external canvas
+
+All the components but `<Board />`, recieve (optionally) some configuration props:
 
 ```js
-{
-  color?: string;
-  filled?: boolean;
-}
+options: { // To control the look and feel of the component
+  filled?: false,
+  color?: blue
+},
+bs: 24 // Brick size, default to 24
 ```
-
-##### Draw in a **`<Board />`:**
-
-First, you'll need a **board** where you can draw. The `<Board />` component can help you with this.
-You can consider this component a canvas (it actually is a canvas), but you could additionally pass a custom prop named `canvas` with the canvas object that you can use to render all the components.
-
-|         prop        |  type   | default |
-|:-------------------:|:-------:|:-------:|
-| canvas | Object |    -    |
-| width | Integer |    200    |
-| heigth | Integer |    200    |
 
 ```js
 import React from 'react'
