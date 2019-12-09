@@ -292,13 +292,39 @@ Draws a bézier curve from `(x1, y1)` to `(x2, y2)` with `(cp1x, cp1y)` and `(cp
 ![blizercurve](./docs/bezier_curve.png)
 
 ```js
-import Board, { Ellipse } from 'react-legra'
+import Board, { BeziearCurve } from 'react-legra'
 
 function MyComponent() {
 
   return (
     <Board>
       <BezierCurve from={[3, 3]} to={[22, 14]} controlPointX={[8, 30]} controlPointX={[18, 1]} />
+    </Board>
+}
+```
+-----------------------------------------------------------
+
+#### `<QuadraticCurve />`
+
+
+Draws a quadratic curve from `(x1, y1)` to `(x2, y2)` with `(cpx, cpy)` as the curve's control point.
+
+|         prop        |        type     | default |
+|:-------------------:|:---------------:|:-------:|
+| from (**required**) | Array[x1, y1]   |    -    |
+| to (**required**) | Array[x2, y2]   |    -    |
+| controlPoint (**required**) | Array[x1, y1, x2, y2]   |    -    |
+
+![quadraticcurve](./docs/quadratic_curve.png)
+
+```js
+import Board, { QuadraticCurve } from 'react-legra'
+
+function MyComponent() {
+
+  return (
+    <Board>
+      <QuadraticCurve from={[3, 3]} to={[22, 14]} controlPoint={[8, 30, 18, 1]} />
     </Board>
 }
 ```

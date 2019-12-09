@@ -9,6 +9,7 @@ import PolygonExample from './examples/PolygonExample'
 import EllipseExample from './examples/EllipseExample'
 import ArcExample from './examples/ArcExample'
 import BezierCurveExample from './examples/BezierCurveExample'
+import QuadraticCurveExample from './examples/QuadraticCurveExample'
 
 export default function App() {
 
@@ -23,6 +24,7 @@ export default function App() {
       <EllipseExample />
       <ArcExample />
       <BezierCurveExample />
+      <QuadraticCurveExample />
     </div>
   )
 }
